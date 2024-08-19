@@ -45,7 +45,7 @@
                      :camera-lens-radius 4.5
                      :camera-lens-hole-spacing 0.5
                      :camera-offset 8
-                     :camera-angle (degrees 30)
+                     :camera-angle (degrees 20)
                      :camera-angle-min (degrees 5)
                      :camera-angle-max (degrees 50)
                      :camera-height 16
@@ -67,7 +67,7 @@
                      :hook-outer-radius 2
                      :hook-inner-radius 1.25
                      :hook-thickness 1.5
-                     :hook-offset 3
+                     :hook-offset 4
                      }
                     opts)]
 
@@ -235,10 +235,11 @@
       (translate [0 mounting base]
                  (canopy-tab cfg)))
     (translate [0 mounting (+ base canopy-tab-thickness 50)]
-    (with-fn 30 
-               (cylinder (+ canopy-tab-radius 1) 100)))
+    (with-fn 6 
+               (cylinder (+ canopy-tab-radius 0.5) 100)))
     )
   ))
+
 (defn back-hull
   [{:keys [mounting vtx-height vtx-thickness canopy-tab-thickness canopy-tab-radius]
     :as cfg}]
@@ -249,8 +250,8 @@
       (translate [mounting 0 base]
                  (canopy-tab cfg)))
     (translate [ mounting 0 (+ base canopy-tab-thickness 50)]
-    (with-fn 30 
-               (cylinder (+ canopy-tab-radius 1) 100)))
+    (with-fn 6 
+               (cylinder (+ canopy-tab-radius 0.5) 100)))
     )
   ))
 
@@ -270,14 +271,14 @@
                      (hull-tab cfg))))
         (translate [ 0 0 (+ base -50)]
                    (with-fn 30 
-                            (cylinder (+ canopy-tab-radius 1) 100)))
+                            (cylinder (+ canopy-tab-radius 0.5) 100)))
         (translate [ 0 0 (+ base canopy-tab-thickness 50)]
-                   (with-fn 30 
-                            (cylinder (+ canopy-tab-radius 1) 100)))
+                   (with-fn 6 
+                            (cylinder (+ canopy-tab-radius 0.5) 100)))
         (vtx (assoc cfg
                     :vtx-thickness (+ vtx-height vtx-thickness)
                     :vtx-height 0
-                    :vtx-protrusion (+ vtx-protrusion 0.3)))
+                    :vtx-protrusion (+ vtx-protrusion 1.5)))
         )
       )))
 
@@ -297,14 +298,14 @@
                      (hull-tab cfg))))
         (translate [ mounting mounting (+ base -50)]
                    (with-fn 30 
-                            (cylinder (+ canopy-tab-radius 1) 100)))
+                            (cylinder (+ canopy-tab-radius 0.5) 100)))
         (translate [ mounting mounting (+ base canopy-tab-thickness 50)]
-                   (with-fn 30 
-                            (cylinder (+ canopy-tab-radius 1) 100)))
+                   (with-fn 6 
+                            (cylinder (+ canopy-tab-radius 0.5) 100)))
         (vtx (assoc cfg
                     :vtx-thickness (+ vtx-height vtx-thickness)
                     :vtx-height 0
-                    :vtx-protrusion (+ vtx-protrusion 0.3)))
+                    :vtx-protrusion (+ vtx-protrusion 1.5)))
         )
       )))
 
@@ -455,7 +456,8 @@
   ]
   )
 
-(render! "thing" (canopy (config)))
+(render! "thing" (thing (config)))
+(render! "canopy" (canopy (config)))
 ;(render! "thing" (turret-mounts (config)))
 
 
