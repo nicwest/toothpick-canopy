@@ -378,6 +378,30 @@ difference () {
         }
       }
     }
+    translate ([7.093145750507619, 18.40685424949238, 16]) {
+      rotate (a=45.0, v=[0, 0, 1]) {
+        rotate (a=-60.00000000000001, v=[1, 0, 0]) {
+          union () {
+            translate ([3, -10.0, 0]) {
+              rotate (a=90.0, v=[0, 1, 0]) {
+                difference () {
+                  cylinder ($fn=30, h=1.5, r=2, center=true);
+                  cylinder ($fn=30, h=1000, r=1.25, center=true);
+                }
+              }
+            }
+            translate ([-3, -10.0, 0]) {
+              rotate (a=90.0, v=[0, 1, 0]) {
+                difference () {
+                  cylinder ($fn=30, h=1.5, r=2, center=true);
+                  cylinder ($fn=30, h=1000, r=1.25, center=true);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
   union () {
     translate ([0, 0, 9]) {

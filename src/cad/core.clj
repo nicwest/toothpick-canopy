@@ -64,6 +64,10 @@
                      :turret-height 10
                      :turret-thickness 2
                      :turret-mount-offset 4
+                     :hook-outer-radius 2
+                     :hook-inner-radius 1.25
+                     :hook-thickness 1.5
+                     :hook-offset 3
                      }
                     opts)]
 
@@ -403,6 +407,24 @@
 
                    )))
 
+(defn ariel-hooks
+  [{:keys [hook-outer-radius hook-inner-radius hook-thickness
+           camera-base-height canopy-thickness hook-offset]
+    :as cfg}]
+  (let [hook (rotate (degrees 90) [0 1 0]
+                     (difference 
+                       (with-fn 30
+                                (cylinder hook-outer-radius hook-thickness))
+                       (with-fn 30
+                                (cylinder hook-inner-radius 1000))))
+        d (- 0 (/ camera-base-height 2) (* 2 canopy-thickness))]
+    (position-camera
+      cfg
+      (union 
+      (translate [hook-offset d 0] hook)
+      (translate [(- hook-offset) d 0] hook)
+      ))))
+
 (defn canopy
   [{:as cfg}]
   (difference 
@@ -414,6 +436,7 @@
       ;(camera-side-mounts cfg)
       (turret cfg)
       (turret-mounts cfg)
+      (ariel-hooks cfg)
       )
     (posts (:post-hole-radius cfg) cfg)
   ))
