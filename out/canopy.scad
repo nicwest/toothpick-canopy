@@ -12,13 +12,13 @@ difference () {
           }
         }
         translate ([0, 25.5, 7]) {
-          translate ([0, 0, 1]) {
-            cylinder ($fn=30, h=2, r=2.5, center=true);
+          translate ([0, 0, 0.75]) {
+            cylinder ($fn=30, h=1.5, r=2.3, center=true);
           }
         }
       }
-      translate ([0, 25.5, 59]) {
-        cylinder ($fn=6, h=100, r=3.0, center=true);
+      translate ([0, 25.5, 57.5]) {
+        cylinder ($fn=6, h=100, r=2.3, center=true);
       }
     }
     difference () {
@@ -33,19 +33,19 @@ difference () {
           }
         }
         translate ([25.5, 0, 16]) {
-          translate ([0, 0, 1]) {
-            cylinder ($fn=30, h=2, r=2.5, center=true);
+          translate ([0, 0, 0.75]) {
+            cylinder ($fn=30, h=1.5, r=2.3, center=true);
           }
         }
       }
-      translate ([25.5, 0, 68]) {
-        cylinder ($fn=6, h=100, r=3.0, center=true);
+      translate ([25.5, 0, 67.5]) {
+        cylinder ($fn=6, h=100, r=2.3, center=true);
       }
     }
     union () {
       translate ([0, 0, 16]) {
-        translate ([0, 0, 1]) {
-          cylinder ($fn=30, h=2, r=2.5, center=true);
+        translate ([0, 0, 0.75]) {
+          cylinder ($fn=30, h=1.5, r=2.3, center=true);
         }
       }
       difference () {
@@ -63,21 +63,21 @@ difference () {
             rotate (a=155.0, v=[0, 0, 1]) {
               difference () {
                 intersection () {
-                  translate ([2.25, 2.25, 2.25]) {
-                    cube ([4.5, 4.5, 4.5], center=true);
+                  translate ([1.9, 1.9, 1.9]) {
+                    cube ([3.8, 3.8, 3.8], center=true);
                   }
-                  cylinder ($fn=30, h=4, r=4.5, center=true);
+                  cylinder ($fn=30, h=4, r=3.8, center=true);
                 }
-                cylinder ($fn=30, h=12, r=2.5, center=true);
+                cylinder ($fn=30, h=12, r=2.3, center=true);
               }
             }
           }
         }
         translate ([0, 0, -34]) {
-          cylinder ($fn=30, h=100, r=3.0, center=true);
+          cylinder ($fn=30, h=100, r=3.8, center=true);
         }
-        translate ([0, 0, 68]) {
-          cylinder ($fn=6, h=100, r=3.0, center=true);
+        translate ([0, 0, 67.5]) {
+          cylinder ($fn=6, h=100, r=2.3, center=true);
         }
         color ([0.2, 0.2, 0.2, ]) {
           difference () {
@@ -101,18 +101,23 @@ difference () {
               }
             }
             rotate (a=45.0, v=[0, 0, 1]) {
-              translate ([0, 55.94974746830583, 51.0]) {
+              translate ([0, 58.071067811865476, 51.0]) {
                 cube ([102.0, 102.0, 102.0], center=true);
               }
             }
+          }
+        }
+        translate ([4.596194077712559, 4.596194077712559, 16]) {
+          rotate (a=135.0, v=[0, 0, 1]) {
+            cube ([8, 8, 8], center=true);
           }
         }
       }
     }
     union () {
       translate ([25.5, 25.5, 16]) {
-        translate ([0, 0, 1]) {
-          cylinder ($fn=30, h=2, r=2.5, center=true);
+        translate ([0, 0, 0.75]) {
+          cylinder ($fn=30, h=1.5, r=2.3, center=true);
         }
       }
       difference () {
@@ -130,21 +135,21 @@ difference () {
             rotate (a=35.0, v=[0, 0, 1]) {
               difference () {
                 intersection () {
-                  translate ([2.25, 2.25, 2.25]) {
-                    cube ([4.5, 4.5, 4.5], center=true);
+                  translate ([1.9, 1.9, 1.9]) {
+                    cube ([3.8, 3.8, 3.8], center=true);
                   }
-                  cylinder ($fn=30, h=4, r=4.5, center=true);
+                  cylinder ($fn=30, h=4, r=3.8, center=true);
                 }
-                cylinder ($fn=30, h=12, r=2.5, center=true);
+                cylinder ($fn=30, h=12, r=2.3, center=true);
               }
             }
           }
         }
         translate ([25.5, 25.5, -34]) {
-          cylinder ($fn=30, h=100, r=3.0, center=true);
+          cylinder ($fn=30, h=100, r=3.8, center=true);
         }
-        translate ([25.5, 25.5, 68]) {
-          cylinder ($fn=6, h=100, r=3.0, center=true);
+        translate ([25.5, 25.5, 67.5]) {
+          cylinder ($fn=6, h=100, r=2.3, center=true);
         }
         color ([0.2, 0.2, 0.2, ]) {
           difference () {
@@ -168,10 +173,15 @@ difference () {
               }
             }
             rotate (a=45.0, v=[0, 0, 1]) {
-              translate ([0, 55.94974746830583, 51.0]) {
+              translate ([0, 58.071067811865476, 51.0]) {
                 cube ([102.0, 102.0, 102.0], center=true);
               }
             }
+          }
+        }
+        translate ([20.90380592228744, 20.90380592228744, 16]) {
+          rotate (a=135.0, v=[0, 0, 1]) {
+            cube ([8, 8, 8], center=true);
           }
         }
       }
@@ -254,11 +264,11 @@ difference () {
                       }
                     }
                     translate ([7.95, 0, 6.5]) {
-                      cube ([1.5, 2.5, 1], center=true);
+                      cube ([1.5, 5, 1], center=true);
                     }
                   }
                   translate ([7.95, 0, 3.25]) {
-                    cube ([1.5, 2.5, 6.5], center=true);
+                    cube ([1.5, 5, 6.5], center=true);
                   }
                 }
                 cylinder ($fn=30, h=1000, r=4.7, center=true);
@@ -288,11 +298,11 @@ difference () {
                         }
                       }
                       translate ([7.95, 0, 6.5]) {
-                        cube ([1.5, 2.5, 1], center=true);
+                        cube ([1.5, 5, 1], center=true);
                       }
                     }
                     translate ([7.95, 0, 3.25]) {
-                      cube ([1.5, 2.5, 6.5], center=true);
+                      cube ([1.5, 5, 6.5], center=true);
                     }
                   }
                   cylinder ($fn=30, h=1000, r=4.7, center=true);
@@ -323,11 +333,11 @@ difference () {
                         }
                       }
                       translate ([7.95, 0, 6.5]) {
-                        cube ([1.5, 2.5, 1], center=true);
+                        cube ([1.5, 5, 1], center=true);
                       }
                     }
                     translate ([7.95, 0, 3.25]) {
-                      cube ([1.5, 2.5, 6.5], center=true);
+                      cube ([1.5, 5, 6.5], center=true);
                     }
                   }
                   cylinder ($fn=30, h=1000, r=4.7, center=true);
@@ -358,11 +368,11 @@ difference () {
                         }
                       }
                       translate ([7.95, 0, 6.5]) {
-                        cube ([1.5, 2.5, 1], center=true);
+                        cube ([1.5, 5, 1], center=true);
                       }
                     }
                     translate ([7.95, 0, 3.25]) {
-                      cube ([1.5, 2.5, 6.5], center=true);
+                      cube ([1.5, 5, 6.5], center=true);
                     }
                   }
                   cylinder ($fn=30, h=1000, r=4.7, center=true);
@@ -371,7 +381,7 @@ difference () {
             }
             translate ([0, 0, 5.0]) {
               rotate (a=90.0, v=[0, 1, 0]) {
-                cylinder ($fn=30, h=1000, r=0.7, center=true);
+                cylinder ($fn=30, h=1000, r=1, center=true);
               }
             }
           }
@@ -382,19 +392,28 @@ difference () {
       rotate (a=45.0, v=[0, 0, 1]) {
         rotate (a=-70.0, v=[1, 0, 0]) {
           union () {
-            translate ([4, -10.0, 0]) {
-              rotate (a=90.0, v=[0, 1, 0]) {
-                difference () {
-                  cylinder ($fn=30, h=1.5, r=2, center=true);
-                  cylinder ($fn=30, h=1000, r=1.25, center=true);
+            translate ([7, -10.75, 0]) {
+              difference () {
+                rotate (a=90.0, v=[0, 1, 0]) {
+                  difference () {
+                    cylinder ($fn=30, h=5, r=2.75, center=true);
+                    cylinder ($fn=30, h=1000, r=1.75, center=true);
+                  }
+                }
+                rotate (a=-40.0, v=[1, 1, 0]) {
+                  rotate (a=90.0, v=[0, 1, 0]) {
+                    translate ([0, -2, 0]) {
+                      cube ([2, 2, 1000], center=true);
+                    }
+                  }
                 }
               }
             }
-            translate ([-4, -10.0, 0]) {
+            translate ([-7, -10.75, 0]) {
               rotate (a=90.0, v=[0, 1, 0]) {
                 difference () {
-                  cylinder ($fn=30, h=1.5, r=2, center=true);
-                  cylinder ($fn=30, h=1000, r=1.25, center=true);
+                  cylinder ($fn=30, h=5, r=2.75, center=true);
+                  cylinder ($fn=30, h=1000, r=1.75, center=true);
                 }
               }
             }

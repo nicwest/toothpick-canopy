@@ -51,23 +51,23 @@
                      :camera-height 16
                      :camera-side-mount-hole-radius 0.7
                      :canopy-thickness 1.5
-                     :canopy-tab-radius 2.5
-                     :canopy-tab-thickness 2
+                     :canopy-tab-radius 2.3
+                     :canopy-tab-thickness 1.5
                      :canopy-camera-box-spacing 0.2
                      :canopy-camera-lens-spacing 0.2
-                     :canopy-camera-side-mount-length 2.5
+                     :canopy-camera-side-mount-length 5
                      :canopy-camera-side-mount-thickness 0.9
                      :canopy-camera-side-mount-offset 3.5
-                     :canopy-camera-side-mount-hole-radius 0.7
+                     :canopy-camera-side-mount-hole-radius 1
                      :hull-tab-thickness 4
                      :turret-length 6
                      :turret-height 10
                      :turret-thickness 2
                      :turret-mount-offset 4
-                     :hook-outer-radius 2
-                     :hook-inner-radius 1.25
-                     :hook-thickness 1.5
-                     :hook-offset 4
+                     :hook-outer-radius 2.75
+                     :hook-inner-radius 1.75
+                     :hook-thickness 5
+                     :hook-offset 7
                      }
                     opts)]
 
@@ -120,7 +120,6 @@
              (rotate (degrees 45) [0 0 1]
                      (translate [0 (+ (/ cutter-size 2) cutter-offset) (/ cutter-size 2) ]
                                 cutter))))))
-
 
 (defn position-camera
   [{:keys [camera-offset camera-height camera-angle mounting]} x]
@@ -234,9 +233,9 @@
       (canopy-camera-box-side cfg :bottom)
       (translate [0 mounting base]
                  (canopy-tab cfg)))
-    (translate [0 mounting (+ base canopy-tab-thickness 50)]
+    (translate [0 mounting (+ base canopy-tab-thickness 49)]
     (with-fn 6 
-               (cylinder (+ canopy-tab-radius 0.5) 100)))
+               (cylinder canopy-tab-radius 100)))
     )
   ))
 
@@ -251,7 +250,7 @@
                  (canopy-tab cfg)))
     (translate [ mounting 0 (+ base canopy-tab-thickness 50)]
     (with-fn 6 
-               (cylinder (+ canopy-tab-radius 0.5) 100)))
+               (cylinder canopy-tab-radius  100)))
     )
   ))
 
@@ -271,14 +270,18 @@
                      (hull-tab cfg))))
         (translate [ 0 0 (+ base -50)]
                    (with-fn 30 
-                            (cylinder (+ canopy-tab-radius 0.5) 100)))
+                            (cylinder (+ canopy-tab-radius 1.5) 100)))
         (translate [ 0 0 (+ base canopy-tab-thickness 50)]
                    (with-fn 6 
-                            (cylinder (+ canopy-tab-radius 0.5) 100)))
+                            (cylinder canopy-tab-radius 100)))
         (vtx (assoc cfg
                     :vtx-thickness (+ vtx-height vtx-thickness)
                     :vtx-height 0
-                    :vtx-protrusion (+ vtx-protrusion 1.5)))
+                    :vtx-protrusion (+ vtx-protrusion 3)))
+        (let [d (Math/sqrt(/ (Math/pow 6.5 2) 2))]
+          (translate [d d base]
+                     (rotate (degrees 135) [0 0 1]
+                             (cube 8 8 8))))
         )
       )))
 
@@ -298,14 +301,18 @@
                      (hull-tab cfg))))
         (translate [ mounting mounting (+ base -50)]
                    (with-fn 30 
-                            (cylinder (+ canopy-tab-radius 0.5) 100)))
+                            (cylinder (+ canopy-tab-radius 1.5) 100)))
         (translate [ mounting mounting (+ base canopy-tab-thickness 50)]
                    (with-fn 6 
-                            (cylinder (+ canopy-tab-radius 0.5) 100)))
+                            (cylinder canopy-tab-radius 100)))
         (vtx (assoc cfg
                     :vtx-thickness (+ vtx-height vtx-thickness)
                     :vtx-height 0
-                    :vtx-protrusion (+ vtx-protrusion 1.5)))
+                    :vtx-protrusion (+ vtx-protrusion 3)))
+        (let [d (Math/sqrt(/ (Math/pow 6.5 2) 2))]
+          (translate [(- mounting d) (- mounting d) base]
+                     (rotate (degrees 135) [0 0 1]
+                             (cube 8 8 8))))
         )
       )))
 
@@ -418,13 +425,20 @@
                                 (cylinder hook-outer-radius hook-thickness))
                        (with-fn 30
                                 (cylinder hook-inner-radius 1000))))
-        d (- 0 (/ camera-base-height 2) (* 2 canopy-thickness))]
+        d (- 0 (/ camera-base-height 2) (* 2.5 canopy-thickness))]
     (position-camera
       cfg
       (union 
-      (translate [hook-offset d 0] hook)
-      (translate [(- hook-offset) d 0] hook)
-      ))))
+        (translate [hook-offset d 0] 
+              (difference
+                hook
+                (rotate (degrees -40) [1 1 0]
+                (rotate (degrees 90) [0 1 0]
+                (translate [0 -2 0]
+                (cube 2 2 1000))))
+                                                ))
+        (translate [(- hook-offset) d 0] hook)
+        ))))
 
 (defn canopy
   [{:as cfg}]
