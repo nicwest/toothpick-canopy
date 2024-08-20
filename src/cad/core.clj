@@ -60,14 +60,14 @@
                      :canopy-camera-side-mount-offset 3.5
                      :canopy-camera-side-mount-hole-radius 1
                      :hull-tab-thickness 4
-                     :turret-length 6
-                     :turret-height 10
+                     :turret-length 5
+                     :turret-height 11
                      :turret-thickness 2
                      :turret-mount-offset 4
-                     :hook-outer-radius 2.75
-                     :hook-inner-radius 1.75
-                     :hook-thickness 5
-                     :hook-offset 7
+                     :hook-outer-radius 3.5
+                     :hook-inner-radius 2.5
+                     :hook-thickness 4
+                     :hook-offset 8
                      }
                     opts)]
 
@@ -250,7 +250,7 @@
                  (canopy-tab cfg)))
     (translate [ mounting 0 (+ base canopy-tab-thickness 50)]
     (with-fn 6 
-               (cylinder canopy-tab-radius  100)))
+               (cylinder (+ canopy-tab-radius 0.5)  100)))
     )
   ))
 
@@ -281,7 +281,7 @@
         (let [d (Math/sqrt(/ (Math/pow 6.5 2) 2))]
           (translate [d d base]
                      (rotate (degrees 135) [0 0 1]
-                             (cube 8 8 8))))
+                             (cube 11 8 8))))
         )
       )))
 
@@ -312,7 +312,7 @@
         (let [d (Math/sqrt(/ (Math/pow 6.5 2) 2))]
           (translate [(- mounting d) (- mounting d) base]
                      (rotate (degrees 135) [0 0 1]
-                             (cube 8 8 8))))
+                             (cube 11 8 8))))
         )
       )))
 
@@ -432,11 +432,11 @@
         (translate [hook-offset d 0] 
               (difference
                 hook
-                (rotate (degrees -40) [1 1 0]
+                ;(rotate (degrees -40) [1 1 0]
                 (rotate (degrees 90) [0 1 0]
-                (translate [0 -2 0]
-                (cube 2 2 1000))))
-                                                ))
+                (translate [0 -3 0]
+                (cube 2 2 1000)))))
+              ;)
         (translate [(- hook-offset) d 0] hook)
         ))))
 
