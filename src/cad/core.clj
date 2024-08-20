@@ -35,7 +35,7 @@
                      :mounting 25.5
                      :fc-height 6
                      :fc-thickness 1
-                     :vtx-height 15
+                     :vtx-height 12.5
                      :vtx-thickness 1
                      :vtx-protrusion 2
                      :camera-base-width 14
