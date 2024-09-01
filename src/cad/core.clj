@@ -45,7 +45,7 @@
                      :camera-lens-radius 4.5
                      :camera-lens-hole-spacing 0.5
                      :camera-offset 8
-                     :camera-angle (degrees 20)
+                     :camera-angle (degrees 25)
                      :camera-angle-min (degrees 5)
                      :camera-angle-max (degrees 50)
                      :camera-height 16
@@ -67,12 +67,14 @@
                      :hook-outer-radius 2.75
                      :hook-inner-radius 1.75
                      :hook-thickness 4
-                     :hook-offset 7
+                     :hook-offset 6
                      :vtx-antenna-outer-radius 4
-                     :vtx-antenna-inner-radius 3
-                     :vtx-antenna-length 20
-                     :vtx-antenna-offset 14
-                     :vtx-antenna-offset2 5
+                     :vtx-antenna-inner-radius 2.5
+                     :vtx-antenna-top-inner-radius 3.2
+                     :vtx-antenna-top-inner-offset 22
+                     :vtx-antenna-length 25
+                     :vtx-antenna-offset 20
+                     :vtx-antenna-offset2 6
                      }
                     opts)]
 
@@ -258,35 +260,45 @@
 (defn back-hull
   [{:keys [mounting vtx-height vtx-thickness canopy-tab-thickness
            canopy-tab-radius vtx-antenna-outer-radius
-           vtx-antenna-length vtx-antenna-inner-radius]
+           vtx-antenna-length vtx-antenna-inner-radius
+           canopy-thickness vtx-antenna-top-inner-radius
+           vtx-antenna-top-inner-offset]
     :as cfg}]
-  (let [base (+ vtx-height vtx-thickness)]
-    (union 
-      (difference
-        (hull
+  (let [base (+ vtx-height vtx-thickness)
+        panel (hull
           (canopy-camera-box-side cfg :top)
           (translate [mounting 0 base]
-                     (canopy-tab cfg)))
+                     (canopy-tab cfg)))]
+    (union 
+      (difference
+        panel
         (translate [ mounting 0 (+ base canopy-tab-thickness 50)]
                    (with-fn 6 
                             (cylinder (+ canopy-tab-radius 0.5)  100)))
         (position-antenna
           cfg
-          (with-fn 30
+          (with-fn 40
                    (cylinder vtx-antenna-outer-radius 1000))
           )
         )
 
+      (difference 
       (position-antenna
         cfg
         (difference
-          (with-fn 30
+          (with-fn 40
                    (cylinder vtx-antenna-outer-radius vtx-antenna-length))
-          (with-fn 30
+          (with-fn 40
                    (cylinder vtx-antenna-inner-radius 1000))
+
+          (translate [0 0 vtx-antenna-top-inner-offset]
+          (with-fn 40
+                   (cylinder vtx-antenna-top-inner-radius vtx-antenna-length)))
+
           ))
+
       )
-    ))
+ )   ))
 
 (defn upper-side-hull
   [{:keys [vtx-height vtx-thickness canopy-tab-thickness
@@ -507,7 +519,7 @@
 
 (render! "thing" (thing (config)))
 (render! "canopy" (canopy (config)))
-(render! "thing" (canopy (config)))
+; (render! "thing" (canopy (config)))
 
 
 (defn -main
